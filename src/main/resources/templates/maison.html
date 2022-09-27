@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>[[ ${titre} ]]</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/TEST.css">
+    </head>
+    <body>
+       [[ ${titre} ]] !
+        Bonjour [[ ${qui} ]] !
+        
+        <ul>
+            <li data-th-each="p : ${gens}">
+                <a >[[${p.id}]]: [[ ${p.prenom} ]] [[ ${ p.nom} ]] [[ ${ p.Age} ]] [[ ${p.Adresse} ]]</a>
+                <!--a data-th-href="@{/gens/${p.id}}">[[${p.id}]]: [[ ${p.prenom} ]]</a> NON -->
+                <!--a data-th-href="${ '/gens/' + p.id }">[[${p.id}]]: [[ ${p.prenom} ]]</a> -->
+                <a data-th-href="@{/gens/{theid}/rm (theid=${p.id})}">×</a>
+            </li>
+        </ul>
+        <form data-th-action="@{/gens/new}" method="POST">
+            
+            <input type="text" name="nom" placeholder="nom...">
+            <input type="text" name="prenom" placeholder="prenom...">
+             <input type="text" name="Age" placeholder="Age...">
+              <input type="text" name="Adresse" placeholder="Adresse...">
+            <input type="submit" value="ajouter">
+        </form>
+    </body>
+</html>
+
+
